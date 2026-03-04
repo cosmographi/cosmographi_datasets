@@ -36,9 +36,7 @@ def load_rubin_throughput(abspath: str) -> RubinThroughput:
         T_hardware.append(df["T"].values)
     w_hardware = np.stack(w_hardware)
     T_hardware = np.stack(T_hardware)
-    df = pd.read_csv(
-        os.path.join(abspath, "lsst_atmos_10.csv"), names=["w", "T"], comment="#"
-    )
+    df = pd.read_csv(os.path.join(abspath, "lsst_atmos_10.csv"), names=["w", "T"], comment="#")
     w_atmosphere = df["w"].values
     T_atmosphere = df["T"].values
 

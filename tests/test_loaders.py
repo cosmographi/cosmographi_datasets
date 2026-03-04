@@ -1,4 +1,4 @@
-from cosmographi_data.loaders import load_rubin_throughput
+from cosmographi_datasets.loaders import load_rubin_throughput
 
 
 def test_load_rubin_throughput(extract_data):

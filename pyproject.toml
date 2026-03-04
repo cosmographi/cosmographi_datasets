@@ -3,7 +3,7 @@ requires = ["hatchling", "hatch-requirements-txt", "hatch-vcs"]
 build-backend = "hatchling.build"
 
 [project]
-name = "cosmographi_data"
+name = "cosmographi_datasets"
 dynamic = ["version"]
 authors = [{ name = "Connor Stone", email = "connorstone628@gmail.com" }]
 description = "Cosmographi Data: Datasets for the Cosmographi package"
@@ -26,16 +26,13 @@ classifiers = [
   "Operating System :: OS Independent",
   "Programming Language :: Python :: 3",
 ]
-dependencies = [
-    "jax>=0.9.1",
-    "pandas>=3.0.1",
-]
+dependencies = ["jax>=0.9.1", "pandas>=3.0.1"]
 
 [project.urls]
-Homepage = "https://github.com/Cosmographi/cosmographi_data"
-Documentation = "https://cosmographi_data.readthedocs.io/en/latest/"
-Repository = "https://github.com/Cosmographi/cosmographi_data"
-Issues = "https://github.com/Cosmographi/cosmographi_data/issues"
+Homepage = "https://github.com/Cosmographi/cosmographi_datasets"
+Documentation = "https://cosmographi_datasets.readthedocs.io/en/latest/"
+Repository = "https://github.com/Cosmographi/cosmographi_datasets"
+Issues = "https://github.com/Cosmographi/cosmographi_datasets/issues"
 
 [project.optional-dependencies]
 dev = [
@@ -50,7 +47,7 @@ dev = [
 source = "vcs"
 
 [tool.hatch.build.hooks.vcs]
-version-file = "src/cosmographi_data/_version.py"
+version-file = "src/cosmographi_datasets/_version.py"
 
 [tool.hatch.version.raw-options]
 local_scheme = "no-local-version"
