@@ -19,8 +19,14 @@ class RubinThroughput(TypedDict):
 def load_rubin_throughput(abspath: str) -> RubinThroughput:
     """Read in data from ```abspath``` and return derived properties as a typed dictionary.
 
-    :param abspath: The absolute path to the data on the local filesystem.
-    :type abspath: str
+    Parameters
+    ----------
+    abspath : str
+        The absolute path to the (unarchived) data on the local filesystem.
+
+    Returns
+    -------
+    :class:`~RubinThroughput`
     """
 
     bands = ["u", "g", "r", "i", "z", "y"]
@@ -40,11 +46,11 @@ def load_rubin_throughput(abspath: str) -> RubinThroughput:
     w_atmosphere = df["w"].values
     T_atmosphere = df["T"].values
 
-    return {
-        "bands": bands,
-        "w_hardware": jnp.array(w_hardware),
-        "T_hardware": jnp.array(T_hardware),
-        "w_atmosphere": jnp.array(w_atmosphere),
-        "T_atmosphere": jnp.array(T_atmosphere),
-        "air_mass": 1.2,
-    }
+    return RubinThroughput(
+        bands=bands,
+        w_hardware=jnp.array(w_hardware),
+        T_hardware=jnp.array(T_hardware),
+        w_atmosphere=jnp.array(w_atmosphere),
+        T_atmosphere=jnp.array(T_atmosphere),
+        air_mass=1.2,
+    )
