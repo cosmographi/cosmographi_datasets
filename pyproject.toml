@@ -1,0 +1,92 @@
+[build-system]
+requires = ["hatchling", "hatch-requirements-txt", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cosmographi_datasets"
+dynamic = ["version"]
+authors = [{ name = "Connor Stone", email = "connorstone628@gmail.com" }]
+description = "Cosmographi Data: Datasets for the Cosmographi package"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { file = "LICENSE" }
+keywords = [
+  "dark energy",
+  "astronomy",
+  "cosmology",
+  "cosmological parameters",
+  "astrophysics",
+  "differentiable programming",
+  "jax",
+]
+classifiers = [
+  "Development Status :: 1 - Planning",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+]
+dependencies = ["jax>=0.5.3", "pandas>=2.3.3"]
+
+[project.urls]
+Homepage = "https://github.com/Cosmographi/cosmographi_datasets"
+Documentation = "https://cosmographi_datasets.readthedocs.io/en/latest/"
+Repository = "https://github.com/Cosmographi/cosmographi_datasets"
+Issues = "https://github.com/Cosmographi/cosmographi_datasets/issues"
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0,<9",
+  "pytest-cov>=4.1,<5",
+  "pytest-mock>=3.12,<4",
+  "pre-commit>=3.6,<4",
+  "ruff>=0.15.0",
+]
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.build.hooks.vcs]
+version-file = "src/cosmographi_datasets/_version.py"
+
+[tool.hatch.version.raw-options]
+local_scheme = "no-local-version"
+
+[tool.ruff]
+line-length = 100 # Same as Black.
+
+[tool.ruff.lint]
+# Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`) codes by default.
+# Unlike Flake8, Ruff doesn't enable pycodestyle warnings (`W`) or
+# McCabe complexity (`C901`) by default.
+select = ["E4", "E7", "E9", "F"]
+# E731 is no assigning to a lambda
+# E741 is ambiguous variable names
+ignore = ["E731", "E741"]
+
+# Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+unfixable = []
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+
+# Like Black, respect magic trailing commas.
+skip-magic-trailing-comma = false
+
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
+
+# 4. Ignore `E402` (import violations) in all `__init__.py` files, and in selected subdirectories.
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["E402"]
+"**/{tests,docs,tools}/*" = ["E402"]
+
+[tool.pytest.ini_options]
